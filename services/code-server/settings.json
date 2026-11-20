@@ -1,0 +1,7 @@
+{
+  "telemetry.telemetryLevel": "off",
+  "workbench.startupEditor": "none",
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "security.workspace.trust.enabled": true,
+  "files.autoSave": "afterDelay"
+}

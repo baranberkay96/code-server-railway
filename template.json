@@ -1,0 +1,84 @@
+{
+  "name": "code-server 4.145 VS Code in Your Browser",
+  "description": "VS Code in your browser with a password, saved home, Node.js and Python.",
+  "category": "Other",
+  "tags": [
+    "code-server",
+    "vscode",
+    "ide",
+    "editor",
+    "dev-environment",
+    "cloud-ide",
+    "nodejs",
+    "python"
+  ],
+  "image": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/code-server.png",
+  "upstream": {
+    "repo": "coder/code-server",
+    "version": "v4.145.2",
+    "image": "codercom/code-server:4.145.2-debian@sha256:09565f9e07f5624554e295e8bab0e2fec4a7c533eb3cff459ed6596a4d3d7c1c",
+    "node": "v26.13.1 (nodejs.org, SHA-256 pinned)",
+    "checked": "2026-11-20"
+  },
+  "services": {
+    "code-server": {
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/code-server.png",
+      "source": {
+        "repo": "baranberkay96/code-server-railway",
+        "rootDirectory": "/services/code-server"
+      },
+      "startCommand": null,
+      "preDeployCommand": null,
+      "healthcheckPath": "/healthz",
+      "healthcheckTimeout": 300,
+      "restartPolicyType": "ON_FAILURE",
+      "restartPolicyMaxRetries": 10,
+      "numReplicas": 1,
+      "cronSchedule": null,
+      "publicDomain": true,
+      "targetPort": 8080,
+      "tcpProxy": null,
+      "volume": {
+        "mountPath": "/home/coder"
+      },
+      "variables": {
+        "PASSWORD": {
+          "defaultValue": "${{secret(32)}}",
+          "description": "Login password for code-server, generated at deploy (copy it from this variable). Min 8 characters; otherwise the login stays locked.",
+          "required": false
+        },
+        "PORT": {
+          "defaultValue": "8080",
+          "description": "Port code-server listens on. The public domain and the healthcheck use it.",
+          "required": false
+        },
+        "TZ": {
+          "defaultValue": "Etc/UTC",
+          "description": "Time zone of the terminal and tools, e.g. Europe/Istanbul.",
+          "required": false
+        },
+        "GIT_REPO": {
+          "defaultValue": "",
+          "description": "Optional. Git URL cloned into ~/project on the first start (public, or with a token in the URL).",
+          "required": false
+        },
+        "EXTENSIONS": {
+          "defaultValue": "",
+          "description": "Optional. Open VSX extension ids installed at start, space-separated, e.g. 'ms-python.python esbenp.prettier-vscode'.",
+          "required": false
+        },
+        "APT_PACKAGES": {
+          "defaultValue": "",
+          "description": "Optional. Debian packages (space-separated) reinstalled in the background after every redeploy, e.g. 'postgresql-client'.",
+          "required": false
+        },
+        "RAILWAY_DEPLOYMENT_DRAINING_SECONDS": {
+          "defaultValue": "10",
+          "description": "Seconds between stop signal and kill on redeploy, so open files are saved.",
+          "required": false
+        }
+      }
+    }
+  },
+  "buckets": []
+}
