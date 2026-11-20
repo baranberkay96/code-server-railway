@@ -31,10 +31,14 @@ RUN set -eux; \
   apt-get clean; \
   rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
+# COPY into existing directories only: a --chmod on a directory COPY creates
+# would apply to that directory too (STANDARD 8.22).
 COPY --chmod=0755 railway-start.sh /usr/local/bin/railway-start
 COPY --chmod=0755 pkg-restore.sh /usr/local/bin/railway-pkg-restore
 COPY --chmod=0644 profile.sh /etc/profile.d/railway-dev.sh
-COPY --chmod=0644 settings.json /usr/local/share/railway-code-server/settings.json
+COPY settings.json /tmp/railway-settings.json
+RUN install -D -m 0644 /tmp/railway-settings.json /usr/local/share/railway-code-server/settings.json \
+ && rm -f /tmp/railway-settings.json
 
 # Image defaults. Variables set on the Railway service win.
 #  - npm and pip install "global" tools into the home directory, which is
