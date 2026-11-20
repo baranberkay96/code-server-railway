@@ -31,7 +31,7 @@ Variables: `PASSWORD` (`secret(32)`), `PORT` (8080), `TZ`, `GIT_REPO`, `EXTENSIO
 
 | Service | Idle RAM | Typical RAM | CPU |
 |---|---|---|---|
-| code-server | RAM_IDLE | 0.5–2 GB with language servers and builds | near 0 idle, 1–2 vCPU during builds |
+| code-server | 0.12 GB (measured, no editor open) | 0.5–2 GB with language servers and builds | near 0 idle, 1–2 vCPU during builds |
 
 Estimated cost: $2–10/month for occasional use. Minimum plan: Trial works for light editing; Hobby for real projects.
 

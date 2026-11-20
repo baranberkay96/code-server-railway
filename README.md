@@ -32,7 +32,7 @@ code-server needs one long-running process, a public HTTPS URL, a password and s
 |---|---|---|---|
 | code-server | code-server 4.145.2 as user `coder` (uid 1000), password login, `/healthz` | `/home/coder` | 8080 (public HTTPS domain) |
 
-**Plan:** RAM_PLACEHOLDER
+**Plan:** Trial or higher. Measured on Railway: about 0.12 GB RAM idle with no editor open; an open editor with language servers and builds typically needs 0.3–2 GB. Give the service more RAM for large projects.
 
 **First login**
 
