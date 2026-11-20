@@ -1,4 +1,4 @@
-# TEMPLATE: code-server 4.145 VS Code in Your Browser
+# TEMPLATE: code-server 4 VS Code in Your Browser
 
 Composer spec. `template.json` is the machine-readable copy.
 
