@@ -162,7 +162,7 @@ main() {
 
   local url="the service's public domain"
   [[ -z "${RAILWAY_PUBLIC_DOMAIN:-}" ]] || url="https://${RAILWAY_PUBLIC_DOMAIN}/"
-  log "code-server $(code-server --version 2> /dev/null | head -n 1 | cut -d' ' -f1), Node.js $(node --version), $(python3 --version)."
+  log "code-server $(node -p "require('/usr/lib/code-server/package.json').version" 2> /dev/null || echo unknown), Node.js $(node --version), $(python3 --version 2>&1)."
   log "Starting code-server on port ${PORT}. Sign in at ${url} with the PASSWORD from the service Variables."
   cd "$PROJECT_DIR"
   exec setpriv --reuid="$CODER_USER" --regid="$CODER_USER" --init-groups \
