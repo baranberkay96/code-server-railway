@@ -2,7 +2,7 @@
 
 [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/code-server-4-vs-code-in-your-browser?referralCode=20H68q)
 
-code-server is Coder's open-source build of VS Code that runs on a server and opens in any browser. This template deploys code-server 4.2 behind its own password login, with a persistent home directory for your projects, extensions and settings, and a ready toolchain: git, Node.js 26 LTS, Python 3 and build tools.
+code-server is Coder's open-source build of VS Code that runs on a server and opens in any browser. This template deploys code-server 4.145.2 behind its own password login, with a persistent home directory for your projects, extensions and settings, and a ready toolchain: git, Node.js 26 LTS, Python 3 and build tools.
 
 ## About Hosting code-server
 
@@ -32,7 +32,7 @@ code-server needs one long-running process, a public HTTPS URL, a password and s
 
 | Service | What runs inside | Volume | Port |
 |---|---|---|---|
-| code-server | code-server 4.2 as user `coder` (uid 1000), password login, `/healthz` | `/home/coder` | 8080 (public HTTPS domain) |
+| code-server | code-server 4.145.2 as user `coder` (uid 1000), password login, `/healthz` | `/home/coder` | 8080 (public HTTPS domain) |
 
 **Plan:** Trial or higher. Measured on Railway: about 0.12 GB RAM idle with no editor open; an open editor with language servers and builds typically needs 0.3–2 GB. Give the service more RAM for large projects.
 
